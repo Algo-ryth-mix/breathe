@@ -582,8 +582,11 @@ class SphinxRenderer:
         if config.breathe_debug_trace_directives:
             _debug_indent -= 1
 
+        if nodes is None or len(nodes) == 0:
+            return []
         # Filter out outer class names if we are rendering a member as a part of a class content.
         rst_node = nodes[1]
+        
         finder = NodeFinder(rst_node.document)
         rst_node.walk(finder)
 
